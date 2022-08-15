@@ -1,0 +1,63 @@
+{
+  "name": "@nuchain-cli/cli",
+  "description": "Nuchain-cli tool. Allows to interact with different components of the nuchain infrastructure and provides different tools as plugins.",
+  "version": "0.0.1",
+  "author": "admin@nuchain.id",
+  "bugs": "https://github.com/nuchain/nuchain-cli/issues",
+  "bin": {
+    "nuchain": "./bin/run"
+  },
+  "type": "commonjs",
+  "license": "Apache-2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "directory": "packages/cli",
+    "url": "https://github.com/nuchain/nuchain-cli.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "scripts": {
+    "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
+    "prepack": "yarn build",
+    "build": "yarn clean && yarn compile",
+    "compile": "tsc --build",
+    "test": "echo 'no test'",
+    "lint": "eslint \"./src/**/*.{ts,tsx}\" --max-warnings=0"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@nuchain-cli/plugin-chain": "0.1.0",
+    "@nuchain-cli/plugin-migration": "0.1.0",
+    "@nuchain-cli/plugin-crowdloan": "0.1.0",
+    "@oclif/config": "^1",
+    "@oclif/plugin-commands": "^1.3.0",
+    "@oclif/plugin-help": "^3",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@types/node": "^10",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "globby": "^10",
+    "ts-node": "^8",
+    "typescript": "4.4.4"
+  },
+  "oclif": {
+    "bin": "nuchain",
+    "plugins": [
+      "@oclif/plugin-help",
+      "@oclif/plugin-commands",
+      "@nuchain-cli/plugin-chain",
+      "@nuchain-cli/plugin-crowdloan",
+      "@nuchain-cli/plugin-migration"
+    ]
+  },
+  "files": [
+    "/dist"
+  ]
+}
